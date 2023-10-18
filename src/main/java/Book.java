@@ -8,17 +8,32 @@ public class Book {
     private String title;
     @BookInfo
     private String author;
+    private int publicationYear;
+    private float price;
 
-    public Book(String ISBN, String id, String title, String author) {
+
+    public Book(String ISBN, String id, String title, String author, int publicationYear, float price) {
         this.ISBN = ISBN;
         this.id = id;
         this.title = title;
         this.author = author;
+        this.publicationYear = publicationYear;
+        this.price = price;
     }
+
 
     public Book(String ISBN) {
         this.ISBN = ISBN;
     }
+
+    public int getPublicationYear() {
+        return publicationYear;
+    }
+
+    public float getPrice() {
+        return price;
+    }
+
     public String getId() {
         return id;
     }
