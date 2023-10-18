@@ -2,6 +2,16 @@ import java.lang.annotation.Annotation;
 import java.lang.reflect.Field;
 import java.lang.reflect.Method;
 
+//Create a Main class with a main method to test the Library class and its functionality. You should perform the following actions:
+//Create several Book objects.
+//Add these books to the library using the addBook method.
+//Add some books to the favoriteBooks collection.
+//Display the list of books and favorite books using the displayBooks and displayFavorites methods.
+//Find a book by its id using the findBookById method.
+//Remove a book from the library and from the favorites list using the removeBook and removeBookFromFavorites methods.
+//Search for books by author
+//Search for books by title
+//Display the updated lists of books and favorite books.
 public class Main {
 
     public static void isISBNValid(Book book) {
@@ -55,18 +65,46 @@ public class Main {
     }
 
     public static void main(String[] args) {
-        Book book = new Book("123455");
-        isISBNValid(book);
+        Book book1 = new Book("123455", "123", "Book title1", "Book Author1");
+        Book book2 = new Book("123455", "100", "Book title2", "Book Author1");
+        Book book3 = new Book("123455", "101", "Book title3", "Book Author1");
+        Book book4 = new Book("123455", "102", "Book title4", "Book Author4");
+        //Collections task (Day 2)
+        Library library = new Library();
+        library.addBook(book1);
+        library.addBook(book2);
+        library.addBook(book3);
+        library.addBook(book4);
+
+        library.addBookToFavorites(book2);
+        library.addBookToFavorites(book4);
+
+        library.displayBooks();
+        library.displayFavorites();
+
+        System.out.println(library.findBookById("101"));
+
+        library.removeBook(book2);
+        library.displayBooks();
+        library.displayFavorites();
+
+        library.searchBooksByAuthor("Book Author1");
+
+
+
+
+        //Annotation task (Day 1)
+        isISBNValid(book1);
 
         Member member = new Member();
         member.setEmail("info@mail.com");
         isEmailValid(member);
 
         member.setAge(18);
-        borrowBook(member, book);
+        borrowBook(member, book1);
 
         Inventory inventory = new Inventory();
-        inventory.addBook(book);
+        inventory.addBook(book1);
         isAvailable(inventory, "12");
         isAvailable(inventory, "123455");
     }
