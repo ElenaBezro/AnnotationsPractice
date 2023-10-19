@@ -162,5 +162,14 @@ public class Main {
         library.displayMostExpensiveBooks();
         System.out.println("groupBooksByDecadeOfPublication " + library.groupBooksByDecadeOfPublication());
 
+        //Queue task (Day 4)
+        System.out.println("*******");
+        BorrowQueue borrowQueue = new BorrowQueue();
+        borrowQueue.add(book1);
+        borrowQueue.add(book2);
+        borrowQueue.add(book3);
+        borrowQueue.processQueue();
+        borrowQueue.processPriorityQueue();
+
     }
 }
