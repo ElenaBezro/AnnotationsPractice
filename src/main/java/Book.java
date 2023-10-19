@@ -1,6 +1,6 @@
 import java.lang.reflect.Field;
 
-public class Book {
+public class Book implements Comparable {
     @ISBN
     private String ISBN;
     private String id;
@@ -65,12 +65,20 @@ public class Book {
 
         for(Field field: fields) {
             try {
-                bookInfo.append(field.getName()).append(": ").append(field.get(this)).append("\n");
+                bookInfo.append(field.getName()).append(": ").append(field.get(this)).append(", ");
             } catch (IllegalAccessException e) {
                 throw new RuntimeException(e);
             }
 
         }
         return bookInfo.toString();
+    }
+
+    @Override
+    public int compareTo(Object o) {
+        if (o instanceof Book) {
+            return this.getTitle().compareTo(((Book) o).getTitle());
+        }
+        return 0;
     }
 }
